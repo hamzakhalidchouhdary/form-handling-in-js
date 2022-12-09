@@ -46,6 +46,15 @@ function getValidationData(validationSet, value) {
   if(validationSet.isRequired && !value) {
     validation.isValid = false;
     validation.message = validationSet.isRequired;
+  } else if(validationSet.isName && !(/^([a-zA-z]+[ \.]?)+$/).test(value)) {
+    validation.isValid = false;
+    validation.message = validationSet.isName;
+  } else if(validationSet.isEmail && !(/^([a-zA-z0-9\.-_]+@[a-z]+\.[a-z]+)$/).test(value)) {
+    validation.isValid = false;
+    validation.message = validationSet.isEmail;
+  } else if(validationSet.isPattren && !(validationSet.isEmail).test(value)) {
+    validation.isValid = false;
+    validation.message = validationSet.PattrenError;
   }
   return validation;
 }
