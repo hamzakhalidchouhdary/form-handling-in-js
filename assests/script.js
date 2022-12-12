@@ -52,9 +52,12 @@ function getValidationData(validationSet, value) {
   } else if(validationSet.isEmail && !(/^([a-zA-z0-9\.-_]+@[a-z]+\.[a-z]+)$/).test(value)) {
     validation.isValid = false;
     validation.message = validationSet.isEmail;
-  } else if(validationSet.isPattren && !(validationSet.isEmail).test(value)) {
-    validation.isValid = false;
-    validation.message = validationSet.PattrenError;
+  } else if(validationSet.isPattren) {
+    const regex = new RegExp(validationSet.isPattren);
+    if (!regex.test(value)) {
+      validation.isValid = false;
+      validation.message = validationSet.pattrenError;
+    }
   }
   return validation;
 }
