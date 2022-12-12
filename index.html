@@ -10,7 +10,10 @@
     />
   </head>
 
-  <body>
+  <body class="container text-capitalize my-3">
+    <div class="text-center">
+      <h2>Form Handling Made Easy!</h2>
+    </div>
     <form class="container text-capitalize" onsubmit="formHandler(event)">
       <div class="form-group my-3">
         <label for="fullName">full name</label>
@@ -33,8 +36,9 @@
           type="text"
           name="fatherName"
           placeholder="Khalid Mahmood Anjum"
-          data-is-required=""
-          data-is-name="must a name"
+          data-is-required="must have string"
+          data-is-pattren="([a-zA-z]+[ \.]?)+"
+          data-pattren-error="must like a string"
         />
         <span id="fatherName-error" class="text-danger small"></span>
       </div>
