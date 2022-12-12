@@ -4,7 +4,7 @@ function formHandler(event) {
   console.log(formData);
 }
 
-function getFormData(event) {
+function readFormFields(event) {
   event.preventDefault();
   const formData = {};
   const formValidation = {};
@@ -30,13 +30,13 @@ function getFormData(event) {
         formData[fieldName] = fieldValue;
         break;
     }
-    formValidation[fieldName] = getValidationData(fieldDataSet, formData[fieldName]);
+    formValidation[fieldName] = validateField(fieldDataSet, formData[fieldName]);
   })
   const isErrors = Object.entries(formValidation).some(([, {isValid}]) => isValid === false);
   return [formData, formValidation, isErrors];
 }
 
-function getValidationData(validationSet, value) {
+function validateField(validationSet, value) {
   const validation = {
     isValid: true,
     message: ''
