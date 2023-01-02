@@ -1,5 +1,5 @@
 function formHandler(event) {
-  const [formData, formValidation, isErrors] = getFormData(event);
+  const [formData, formValidation, isErrors] = readFormFields(event);
   showErrors(formValidation);
   console.log(formData);
 }
