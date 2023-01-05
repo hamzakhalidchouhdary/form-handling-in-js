@@ -46,13 +46,13 @@ function validateField(validationSet, value) {
   if(validationSet.isRequired && !value) {
     validation.isValid = false;
     validation.message = validationSet.isRequired;
-  } else if(validationSet.isName && !(/^([a-zA-z]+[ \.]?)+$/).test(value)) {
+  } else if(validationSet.isName && value && !(/^([a-zA-z]+[ \.]?)+$/).test(value)) {
     validation.isValid = false;
     validation.message = validationSet.isName;
-  } else if(validationSet.isEmail && !(/^([a-zA-z0-9\.-_]+@[a-z]+\.[a-z]+)$/).test(value)) {
+  } else if(validationSet.isEmail && value && !(/^([a-zA-z0-9\.-_]+@[a-z]+\.[a-z]+)$/).test(value)) {
     validation.isValid = false;
     validation.message = validationSet.isEmail;
-  } else if(validationSet.isPattren) {
+  } else if(validationSet.isPattren && value) {
     const regex = new RegExp(validationSet.isPattren);
     if (!regex.test(value)) {
       validation.isValid = false;
